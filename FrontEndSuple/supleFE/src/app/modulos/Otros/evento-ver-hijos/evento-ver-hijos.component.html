@@ -1,0 +1,11 @@
+<br>
+<div>
+  <h3 style="text-align: center; color: #0e6471">{{nombreEvento}}</h3>
+</div>
+<div style="text-align: center; padding: 10px" >
+  <div id="bloque" *ngFor="let objeto of libros">
+    <app-lista-libros
+      [libroAux]="objeto">
+    </app-lista-libros>
+  </div>
+</div>

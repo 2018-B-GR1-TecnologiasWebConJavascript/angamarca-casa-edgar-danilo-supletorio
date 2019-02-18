@@ -1,0 +1,39 @@
+<div>
+  <div><h2>Ventana del Adminsitrador</h2></div>
+  <div>
+    <button (click)="salir()">Sig Put</button>
+  </div>
+</div>
+<div>
+  <div *ngIf="error">
+    <label>{{error}}</label>
+  </div>
+  <div>
+    <label for="buscarUsuaro">BUSCAR</label>
+    <input type="text" name="buscarUsuario" id="buscarUsuaro" placeholder="Busqueda Usuarios por nombre o correo" [(ngModel)]="textoBuscar">
+    <button (click)="buscarTexto()"> Buscar </button>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Fecha Nacimiento</th>
+        <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let usuario of Usuarios">
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.correo}}</td>
+        <td>{{usuario.fechaNacimiento}}</td>
+        <td>
+          <a [routerLink]="['/Administrador','ActualizarUsuario',usuario.id]" ><button>Actualizar</button></a>
+          <button (click)="eliminar(usuario.id)">Borrar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

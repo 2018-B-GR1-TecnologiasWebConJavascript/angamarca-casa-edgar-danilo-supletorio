@@ -1,0 +1,42 @@
+<div>
+  <div><h2>Visualizar Autor</h2></div>
+</div>
+<div>
+  <a routerLink="/Usuario/autorCrear">
+    <button>Agregar Autor</button>
+  </a>
+
+</div>
+<div>
+  <div *ngIf="error">
+    <label>{{error}}</label>
+  </div>
+  <div>
+    <label for="buscarUsuaro">BUSCAR</label>
+    <input type="text" name="buscarUsuario" id="buscarUsuaro" placeholder="Busqueda de autores por nombre" [(ngModel)]="textoBuscar">
+    <button (click)="buscarTexto()"> Buscar </button>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha de nacimiento</th>
+        <th>Ecuatoriano</th>
+        <th>Numero de Libros</th>
+        <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let objeto of autores">
+        <td>{{objeto.nombres}}</td>
+        <td>{{objeto.apellidos}}</td>
+        <td>{{objeto.fechaNacimiento}}</td>
+        <td>{{objeto.ecuatoriano}}</td>
+        <td>{{objeto.numeroLibros}}</td>
+        <td>
+          <a [routerLink]="['/Usuario','autorActualizar',objeto.id]" ><button>Actualizar</button></a>
+          <button (click)="eliminar(objeto.id)">Borrar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

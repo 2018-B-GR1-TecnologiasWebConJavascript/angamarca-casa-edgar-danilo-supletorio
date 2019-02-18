@@ -1,0 +1,108 @@
+<div style="text-align: center; padding-top: 15px">
+  <h3>Facturar</h3>
+</div>
+<div style="padding-left: 30%">
+  <form #formularioFactura="ngForm"
+        novalidate>
+    <div>
+      <h3>Datos Cliente</h3>
+    </div>
+    <div>
+      <label for="nombreFac">Nombre</label>
+      <input id="nombreFac" type="text" required name="nombreFac" [disabled]="!esCajero"
+             placeholder="Nombre emitir factura" maxlength="30"
+             [(ngModel)]="facturaCabecera.nombre" #inputNombre="ngModel">
+    </div>
+    <div>
+      <label for="cedulaFac">Cedula o ruc</label>
+      <input id="cedulaFac" type="text" required name="cedulaFac" [disabled]="!esCajero"
+             placeholder="Cedula o Ruc" maxlength="13"
+             [(ngModel)]="facturaCabecera.cedulaRuc" #inputCedula="ngModel">
+    </div>
+    <div>
+      <label for="telefonoFac">Telefono</label>
+      <input id="telefonoFac" type="text" name="telefonFac" [disabled]="!esCajero"
+             placeholder="Telefono" maxlength="10"
+             [(ngModel)]="facturaCabecera.telefono" #inputTelefono="ngModel">
+    </div>
+    <div>
+      <label for="correoFac">Correo Electronico</label>
+      <input id="correoFac" type="email" name="correoFac" [disabled]="!esCajero"
+             placeholder="Correol Electronico" maxlength="40"
+             [(ngModel)]="facturaCabecera.correoElectronico" #inputCorreo="ngModel">
+    </div>
+    <div>
+      <label for="fecha">Fecha de Nacimiento</label>
+      <input id="fecha" type="date" name="fecha" [disabled]="!esCajero"
+             placeholder="Fecha de nacimiento" maxlength="12"
+             [(ngModel)]="facturaCabecera.fecha" #inputFecha="ngModel">
+    </div>
+    <div>
+      <label for="direccion">Direccion</label>
+      <input id="direccion" type="text" name="direccion" [disabled]="!esCajero"
+             placeholder="Direccion" maxlength="40"
+             [(ngModel)]="facturaCabecera.direccion" #inputDireccion="ngModel">
+    </div>
+    <div>
+      <label for="estadoFac">Estado</label>
+      <input id="estadoFac" type="text" name="estadoFac" [disabled]="!esCajero"
+             placeholder="Estado" maxlength="40" disabled
+             [(ngModel)]="facturaCabecera.estado" #inputDireccion="ngModel">
+    </div>
+    <div>
+      <label for="totalFac">Total</label>
+      <input id="totalFac" type="number" name="totalFac" [disabled]="!esCajero"
+             placeholder="Total" maxlength="40" disabled
+             [(ngModel)]="facturaCabecera.total" #inputDireccion="ngModel">
+    </div>
+    <div>
+      <h3>Datos Cliente</h3>
+    </div>
+    <div>
+      <div>
+        <label for="tipoPag">Tipo de Pago</label>
+        <select id="tipoPag" [(ngModel)]="facturaCabecera.tipoPago" name="tipoPag" [disabled]="!esCajero">
+          <option></option>
+          <option [value]="'Efectivo'">Efectivo</option>
+          <option [value]="'Tarjeta'">Tarjeta</option>
+          <option [value]="'Cheque'">Cheque</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <button (click)="guarDarDatos()" [disabled]="!esCajero">Guardar Datos</button>
+    </div>
+    <div>
+      <a [routerLink]="['/Cajero','anadirItem',facturaCabecera.id]">
+        <button [disabled]="!esCajero" >Anadir Item</button>
+      </a>
+    </div>
+    <div>
+      <h3>Detalle</h3>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let item of facturaDetalle">
+          <td>{{item.idEventoPorLibro.idLibro}}</td>
+          <td>{{item.catidad}}</td>
+          <td>{{item.precio}}</td>
+          <td>{{item.total}}</td>
+          <td><button [disabled]="!esCajero" (click)="eliminar(item.id)">Eliminar</button></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <button  [disabled]="formularioFactura.invalid" [disabled]="!esCajero" (click)="emitirFormulario(formularioFactura)">
+        Pagar Factura
+      </button>
+    </div>
+  </form>
+
+</div>

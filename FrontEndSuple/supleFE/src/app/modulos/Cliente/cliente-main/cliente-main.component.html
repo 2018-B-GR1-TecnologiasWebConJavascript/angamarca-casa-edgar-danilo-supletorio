@@ -1,0 +1,24 @@
+
+<div>
+  <h3>Lista de Facturas</h3>
+</div>
+<div>
+  <table>
+    <tr>
+      <th>Nombre a quien se emitio</th>
+      <th>Fecha</th>
+      <th>Total</th>
+      <th>Tipo Pago</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let factura of facturas">
+      <td>{{factura.nombre}}</td>
+      <td>{{factura.fecha}}</td>
+      <td>{{factura.total}}</td>
+      <td>{{factura.tipoPago}}</td>
+      <td>
+        <a [routerLink]="['/Cliente','facturacion',factura.id]"><button>Ver</button></a>
+      </td>
+    </tr>
+  </table>
+</div>

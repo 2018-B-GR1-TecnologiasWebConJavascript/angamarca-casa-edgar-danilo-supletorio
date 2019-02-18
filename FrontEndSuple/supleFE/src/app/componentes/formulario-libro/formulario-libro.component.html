@@ -1,0 +1,70 @@
+<div style="text-align: center; padding-top: 15px">
+  <h3>Formulario del Libro</h3>
+</div>
+<div style="padding-left: 30%">
+  <form #formularioLibro="ngForm"
+        novalidate
+        (submit)="emitirFormulario(formularioLibro)">
+    <div>
+      <label for="nombreLibro">Nombre del libro</label>
+      <input id="nombreLibro" type="text" required name="nombreLibro"
+             placeholder="Nombres del libro" maxlength="30"
+             [(ngModel)]="libro.nombre" #inputNombre="ngModel">
+    </div>
+    <div>
+      <label for="nombreEditorial">Nombre de la editorial</label>
+      <input id="nombreEditorial" type="text" required name="nombreEditorial"
+             placeholder="Nombre de la editorial" maxlength="30"
+             [(ngModel)]="libro.nombreEditorial" #inputNomEdi="ngModel">
+    </div>
+    <div>
+      <label for="numeroPaginas">Numero de paginas</label>
+      <input id="numeroPaginas" type="number" name="numeroPaginas"
+             placeholder="Numeros de paginas" maxlength="5"
+             [(ngModel)]="libro.numeroPaginas" #inputNumPaginas="ngModel">
+    </div>
+    <div>
+      <label for="fecha">Fecha de Publicacion</label>
+      <input id="fecha" type="date" name="fecha"
+             placeholder="Fecha de publicacion" maxlength="12"
+             [(ngModel)]="libro.fechaPublicacion" #inputFecha="ngModel">
+    </div>
+    <div>
+      <label for="edicion">Numero de edicion</label>
+      <input id="edicion" type="number" name="edicion"
+             placeholder="Numero de la edicion" maxlength="5"
+             [(ngModel)]="libro.edicion" #inputEdicion="ngModel">
+    </div>
+    <div>
+      <label> Id del Autor {{libro.idAutor}}</label>
+    </div>
+    <div>
+      <button [disabled]="formularioLibro.invalid">
+        {{nombreButton}}
+      </button>
+    </div>
+  </form>
+</div>
+<div>
+  <div>
+    <h3>Autores</h3>
+    <select [(ngModel)]="idObjAux" (mouseup)="agreagrPaciente()">
+      <option>  </option>
+      <option *ngFor="let obj of autores">{{obj.id}}</option>
+    </select>
+  </div>
+  <div >
+    <table style="padding-left: 30%">
+      <tr>
+        <th>Id Autor</th>
+        <th>Nombre Autor</th>
+        <th>Apellido Autor</th>
+      </tr>
+      <tr *ngFor="let obj of autores">
+        <td>{{obj.id}}</td>
+        <td>{{obj.nombres}}</td>
+        <td>{{obj.apellidos}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

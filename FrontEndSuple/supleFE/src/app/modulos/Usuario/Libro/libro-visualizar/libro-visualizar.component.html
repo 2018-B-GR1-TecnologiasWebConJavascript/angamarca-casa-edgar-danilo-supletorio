@@ -1,0 +1,46 @@
+<div>
+  <div><h2>Visualizar Libros</h2></div>
+</div>
+<div>
+  <a routerLink="/Usuario/libroCrear"><button>Agregar Libro</button></a>
+
+</div>
+<div>
+  <div *ngIf="error">
+    <label>{{error}}</label>
+  </div>
+  <div>
+    <label for="buscarUsuaro">BUSCAR</label>
+    <input type="text" name="buscarUsuario" id="buscarUsuaro" placeholder="Busqueda de libros por nombre" [(ngModel)]="textoBuscar">
+    <button (click)="buscarTexto()"> Buscar </button>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Nombre de la Editorial</th>
+        <th>Fecha de publicacion</th>
+        <th>Edicion</th>
+        <th>Numero de Paginas</th>
+        <th>Autor</th>
+        <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let objeto of libros">
+        <td>{{objeto.nombre}}</td>
+        <td>{{objeto.nombreEditorial}}</td>
+        <td>{{objeto.fechaPublicacion}}</td>
+        <td>{{objeto.edicion}}</td>
+        <td>{{objeto.numeroPaginas}}</td>
+        <td>
+          <div *ngIf="objeto.idAutor">
+            {{objeto.idAutor.nombres}} {{objeto.idAutor.apellidos}}
+          </div>
+        </td>
+        <td>
+          <a [routerLink]="['/Usuario','libroActualizar',objeto.id]" ><button>Actualizar</button></a>
+          <button (click)="eliminar(objeto.id)">Borrar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<br>
+<div style="text-align: center; padding-top: 15px">
+  <h3>Libro</h3>
+</div>
+<div *ngIf="libro">
+  <label>{{libro.nombre}}</label> <br>
+  <label>{{libro.nombreEditorial}}</label> <br>
+  <div *ngIf="libro.idAutor">
+    <label>{{libro.idAutor.nombres}} {{libro.idAutor.apellidos}}</label> <br>
+  </div>
+  <label>{{libro.edicion}}</label> <br>
+  <label>{{libro.fechaPublicacion}}</label> <br>
+  <label>{{libro.numeroPaginas}}</label> <br>
+</div>
+
+

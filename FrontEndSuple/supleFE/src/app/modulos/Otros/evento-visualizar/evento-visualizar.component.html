@@ -1,0 +1,46 @@
+<div>
+  <div><h2>Visualizar Eventos</h2></div>
+</div>
+<div *ngIf="esUsuario">
+  <a routerLink="/Usuario/eventoCrear">
+    <button>Agregar evento</button>
+  </a>
+</div>
+<div>
+  <div *ngIf="error">
+    <label>{{error}}</label>
+  </div>
+  <div>
+    <label for="buscarUsuaro">BUSCAR</label>
+    <input type="text" name="buscarUsuario" id="buscarUsuaro" placeholder="Busqueda de eventos por nombre" [(ngModel)]="textoBuscar">
+    <button (click)="buscarTexto()"> Buscar </button>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Fecha del evento</th>
+        <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let objeto of eventos">
+        <td>{{objeto.nombre}}</td>
+        <td>{{objeto.fecha}}</td>
+        <td>
+          <div *ngIf="esUsuario">
+            <a [routerLink]="['/Usuario','eventoVisualizar','hijosEvento',objeto.id]"><button>Ver</button></a>
+            <a [routerLink]="['/Usuario','anadireventoHijos',objeto.id]" ><button>Anadir hijos a evento</button></a>
+          </div>
+          <div *ngIf="!esUsuario">
+            <a [routerLink]="['/Eventos','hijosEvento',objeto.id]"><button>Ver</button></a>
+          </div>
+          <div *ngIf="esCajero"><button (click)="gestionFactura(objeto.id)">Gestion Facturas</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

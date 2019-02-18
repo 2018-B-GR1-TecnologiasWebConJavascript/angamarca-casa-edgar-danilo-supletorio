@@ -1,0 +1,50 @@
+<div style="text-align: center; padding-top: 15px">
+  <h3>Formulario de Autor</h3>
+</div>
+<div style="padding-left: 30%">
+  <form #formularioAutor="ngForm"
+        novalidate
+        (submit)="emitirFormulario(formularioAutor)">
+    <div>
+      <label for="nombreAutor">Nombre del autor</label>
+      <input id="nombreAutor" type="text" required name="nombreAutor"
+             placeholder="Nombres del autor" maxlength="30"
+             [(ngModel)]="autor.nombres" #inputNombre="ngModel">
+    </div>
+    <div>
+      <label for="apellidoAutor">Apellido del autor</label>
+      <input id="apellidoAutor" type="text" required name="apellidoAutor"
+             placeholder="Apellidos del autor" maxlength="30"
+             [(ngModel)]="autor.apellidos" #inputApellido="ngModel">
+    </div>
+    <div>
+      <label for="numeroLibros">Numero de Libros</label>
+      <input id="numeroLibros" type="number" name="numeroLibros"
+             placeholder="Numeros de libros" maxlength="5"
+             [(ngModel)]="autor.numeroLibros" #inputNumLibros="ngModel">
+    </div>
+    <div>
+      <label for="fecha">Fecha de Nacimiento</label>
+      <input id="fecha" type="date" name="fecha"
+             placeholder="Fecha de nacimiento" maxlength="12"
+             [(ngModel)]="autor.fechaNacimiento" #inputFecha="ngModel">
+    </div>
+    <div>
+      <label for="ecuatoriano">Tienes Seguro</label>
+      <div>
+        <input id="ecuatoriano" type="radio" name="ecuatoriano" [value]="true"
+               [(ngModel)]="autor.ecuatoriano"> SI
+      </div>
+      <div>
+        <input id="ecuatoriano1" type="radio" name="ecuatoriano" [value]="false"
+               placeholder="Tiene seguro" maxlength="12"
+               [(ngModel)]="autor.ecuatoriano">NO
+      </div>
+    </div>
+    <div>
+      <button [disabled]="formularioAutor.invalid">
+        {{nombreButton}}
+      </button>
+    </div>
+  </form>
+</div>

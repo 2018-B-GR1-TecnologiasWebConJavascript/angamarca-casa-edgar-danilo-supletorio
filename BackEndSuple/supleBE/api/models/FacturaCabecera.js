@@ -10,12 +10,10 @@ module.exports = {
   attributes: {
     nombre:{
       type: 'string',
-      required: true,
       regex: /^[a-zA-Z\s]+$/
     },
     cedulaRuc:{
       type: 'string',
-      required: true,
       columnName: 'cedula_ruc',
       custom: function (value) {
         return _.isString(value) && value.length>=10 && value.length<=13 && value.match(/[0-9]/);
@@ -45,8 +43,6 @@ module.exports = {
     },
     tipoPago:{
       type: 'string',
-      unique: true,
-      required: true,
       isIn: [
         'Efectivo',
         'Tarjeta',
@@ -73,6 +69,5 @@ module.exports = {
       via: 'idFacturaCabecera'
     }
   },
-
 };
 

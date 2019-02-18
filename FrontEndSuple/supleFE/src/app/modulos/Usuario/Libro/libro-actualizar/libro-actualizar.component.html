@@ -1,0 +1,8 @@
+<div *ngIf="objetoActualizar">
+  <app-formulario-libro
+    [libroAux]="objetoActualizar"
+    [nombreButtonAux]="'Actualizar'"
+    (formularioValido)="actualizar($event)"
+  >
+  </app-formulario-libro>
+</div>

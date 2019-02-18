@@ -1,0 +1,38 @@
+<div>
+  <div *ngIf="error">
+    <label>{{error}}</label>
+  </div>
+  <div>
+    <label for="buscarUsuaro">BUSCAR</label>
+    <input type="text" name="buscarUsuario" id="buscarUsuaro" placeholder="Busqueda facturas por nombre del usuario" [(ngModel)]="textoBuscar">
+    <button (click)="buscarTexto()"> Buscar </button>
+  </div>
+  <div>
+    <select [(ngModel)]="textoBuscarEstado" (mouseup)="filtarPorEstado()">
+      <option>  </option>
+      <option [value]="'En compra'">En compra</option>
+      <option [value]="'Pagado'">Pagado</option>
+      <option [value]="''">Todos</option>
+    </select>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Nombre Cliente</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      <tr *ngFor="let obj of facturas">
+        <td>{{obj.idUsuario.nombre}}</td>
+        <td>{{obj.fecha}}</td>
+        <td>{{obj.total}}</td>
+        <td>{{obj.estado}}</td>
+        <td>
+          <a [routerLink]="['/Cajero','facturacion',obj.id]" ><button>Gestionar</button></a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

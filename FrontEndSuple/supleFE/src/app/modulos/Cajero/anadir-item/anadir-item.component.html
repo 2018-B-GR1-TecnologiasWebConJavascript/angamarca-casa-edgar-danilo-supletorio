@@ -1,0 +1,20 @@
+<div>
+  <h3>Anadir Item a la factura</h3>
+</div>
+<div>
+  <select [(ngModel)]="idLibroseleccionado" (mouseup)="seleccionarLibro()" >
+    <option>  </option>
+    <option *ngFor="let libro of eventoPorLibro" [value]="libro.id">{{libro.idLibro.nombre}}</option>
+  </select>
+</div>
+<div>
+  <label for="cantidad">Ingrese la cantidad</label>
+  <input id="cantidad" type="number" [(ngModel)]="facturaDetalle.catidad">
+</div>
+<div>
+  <label for="valor">Ingrese el valor a cancelar</label>
+  <input id="valor" type="number" [(ngModel)]="facturaDetalle.precio">
+</div>
+<div>
+  <button (click)="anadir()">Anadir Item</button>
+</div>

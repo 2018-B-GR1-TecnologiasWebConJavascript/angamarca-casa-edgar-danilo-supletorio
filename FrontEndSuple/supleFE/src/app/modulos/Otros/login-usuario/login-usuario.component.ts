@@ -28,7 +28,7 @@ export class LoginUsuarioComponent implements OnInit {
         (rol:RolPorUsuarioInterface[]) =>
         {
           if(rol.length>0){
-            if(rol.find(r=> <number>r.idRol === 1))
+            if(rol.find(r=> <number> r.idRol === 1))
               this._router.navigate((['/Administrador']));
             else
             if(rol.find(r=> <number>r.idRol === 2))

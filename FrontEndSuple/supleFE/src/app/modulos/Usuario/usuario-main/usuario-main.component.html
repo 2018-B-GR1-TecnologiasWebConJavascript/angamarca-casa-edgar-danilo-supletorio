@@ -1,10 +1,21 @@
 <div>
   <h3>Ventanas del Cliente</h3>
   <div>
-    <button>Salir</button>
+    <button (click)="salir()">Salir</button>
   </div>
 </div>
 
+<div>
+  <div>
+    <a routerLink="libroVisualizar">Ventana Libro</a>
+  </div>
+  <div>
+    <a routerLink="autorVisualizar">Ventana Autores</a>
+  </div>
+  <div>
+    <a routerLink="eventoVisualizar">Ventana Eventos</a>
+  </div>
+</div>
 <div>
   <router-outlet></router-outlet>
 </div>

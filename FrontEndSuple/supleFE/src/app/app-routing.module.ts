@@ -113,6 +113,11 @@ const routes: Routes = [
     ],
     children:[
       {
+        path:'',
+        pathMatch: 'full',
+        redirectTo: 'visualizarfacturas'
+      },
+      {
         path: 'visualizarfacturas',
         component: CajerofacturasComponent
       },
@@ -133,6 +138,11 @@ const routes: Routes = [
       ClienteLoginServiceService
     ],
     children:[
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'visualizar'
+      },
       {
         path: 'facturacion/:id',
         component: FacturaClienteComponent
